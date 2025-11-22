@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Precious Pastries - Coming Soon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+        background:#0a0a0b;
+        color:white;
+        font-family:"Poppins",sans-serif;
+        overflow-x:hidden;
+    }
+
+    .hero{
+        height:100vh;width:100%;
+        display:flex;flex-direction:column;
+        justify-content:center;align-items:center;
+        text-align:center;padding:20px;
+        background:
+            linear-gradient(rgba(0,0,0,0.50),rgba(0,0,0,0.60)),
+            url("chinchin.jpg");
+        background-size:cover;background-position:center;
+        position:relative;
+    }
+
+    .glass-box{
+        background:rgba(255,255,255,0.07);
+        padding:40px 30px;border-radius:20px;
+        backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+        border:1px solid rgba(255,255,255,0.12);
+        animation:fadeIn 1.5s ease;
+    }
+
+    .hero h1{
+        font-family:"Great Vibes",cursive;
+        font-size:4.5rem;font-weight:400;
+        color:#ffdde9;text-shadow:0 0 12px rgba(255,150,170,0.4);
+        margin-bottom:10px;
+    }
+
+    .hero h2{
+        font-size:2.5rem;font-weight:700;margin-bottom:15px;
+        animation:fadeUp 2s ease;
+    }
+
+    .countdown{
+        font-size:1.8rem;margin-top:10px;
+        font-weight:600;color:#ff4d4d;
+        animation:pulse 2s infinite;
+    }
+
+    .scroll-down {
+    margin-top: 20px;
+    font-size: 16px;
+    opacity: 0.7;
+    text-align: center;
+    animation: bounce 2s infinite;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+    .about{
+        padding:60px 20px;background:#141416;text-align:center;
+    }
+
+    .about h2{font-size:2rem;margin-bottom:15px;}
+
+    .icon-text{
+        display:flex;align-items:center;
+        justify-content:center;gap:10px;
+        margin:10px 0;font-size:1.1rem;
+        color:#d6d6d6;animation:fadeUp 2s ease;
+    }
+
+    .icon{
+        font-size:1.6rem;
+        animation:floatIcon 3s infinite ease-in-out;
+    }
+
+    .about p{
+        max-width:650px;margin:auto;
+        line-height:1.7rem;font-size:1.1rem;
+        color:#d6d6d6;margin-bottom:20px;
+    }
+
+    /* SEXY WHATSAPP BUTTON */
+    .whatsapp{
+        position:fixed;bottom:25px;right:25px;
+        width:70px;height:70px;
+        border-radius:50%;
+        display:flex;justify-content:center;align-items:center;
+        background:radial-gradient(circle,#25d366,#1ebe57);
+        color:white;font-size:34px;
+        box-shadow:0px 10px 28px rgba(0,0,0,0.45);
+        cursor:pointer;
+        animation:floatBtn 3s infinite ease-in-out,pop 1s ease;
+        border:3px solid rgba(255,255,255,0.25);
+        backdrop-filter:blur(6px);
+        transition:0.3s;
+        z-index:9999;
+    }
+
+    .whatsapp:hover{
+        transform:scale(1.18);
+        box-shadow:0px 15px 35px rgba(0,0,0,0.55);
+    }
+
+    /* View Products Button */
+    .prod-btn{
+        padding:12px 25px;
+        font-size:1.2rem;
+        font-weight:600;
+        color:#ffdde9;
+        background:rgba(255,255,255,0.08);
+        border:1px solid rgba(255,255,255,0.2);
+        border-radius:15px;
+        cursor:pointer;
+        backdrop-filter:blur(6px);
+        transition:all 0.3s ease;
+        box-shadow:0px 5px 15px rgba(0,0,0,0.3);
+        margin-top:15px;
+    }
+
+    .prod-btn:hover{
+        transform:scale(1.05);
+        box-shadow:0px 10px 25px rgba(0,0,0,0.45);
+    }
+
+    @keyframes floatBtn{
+        0%{transform:translateY(0);}
+        50%{transform:translateY(-10px);}
+        100%{transform:translateY(0);}
+    }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
+    @keyframes pulse{0%{opacity:0.5;}100%{opacity:1;}}
+    @keyframes pop{0%{transform:scale(0.5);}100%{transform:scale(1);}}
+    @keyframes floatIcon{
+        0%{transform:translateY(0);}
+        50%{transform:translateY(-5px);}
+        100%{transform:translateY(0);}
+    }
+
+    @media(max-width:768px){
+        .hero h1{font-size:3rem;}
+        .hero h2{font-size:1.8rem;}
+        .countdown{font-size:1.3rem;}
+    }
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="glass-box">
+        <h1>Precious Pastries</h1>
+        <h2>Coming Soon</h2>
+        <div class="countdown" id="timer">Loading...</div>
+    </div>
+    <div class="scroll-down">Scroll Down ↓</div>
+</section>
+
+<section class="about">
+    <h2>Our Location & Contacts</h2>
+
+    <div class="icon-text">
+        <span class="icon">📍</span>
+        <span>No. 70 NTA Road, Mgbouba Rumukwuta, Port Harcourt City</span>
+    </div>
+
+    <div class="icon-text">
+        <span class="icon">📞</span>
+        <span>Call / WhatsApp: <strong>08139030015</strong></span>
+    </div>
+
+    <h2 style="margin-top:40px;">Important Notice</h2>
+    <p>
+        You can place your orders now directly through WhatsApp by clicking the WhatsApp button.
+        Our technical experts are currently building something amazing — 
+        a beautiful shopping experience where you can order Cakes,
+        Chin Chin, Donuts, Meat Pie, Fish Pie, Peanut & more with ease.
+    </p>
+
+    <p style="font-weight:600;color:#ffdde9;">
+        Freshly baked with love. Something delicious is coming soon. 🍰✨
+    </p>
+
+    <!-- View Products Section -->
+    <div style="margin-top:20px;">
+        <p style="color:#d6d6d6; font-size:1.1rem; margin-bottom:15px;">
+            You can explore our products and place a few orders in advance while we prepare the full website.
+        </p>
+        <button class="prod-btn" onclick="goToProducts()">View Products</button>
+    </div>
+</section>
+
+<a 
+ href="https://wa.me/2348139030015?text=Hello%20Precious%20Pastries,%0AI%20am%20interested%20in%20placing%20an%20order.%20Please%20provide%20the%20available%20products,%20pricing,%20and%20delivery%20details.%20I%20would%20appreciate%20your%20assistance.%20Thank%20you." 
+ target="_blank" 
+ class="whatsapp"
+>💬</a>
+
+<script>
+    function startCountdown(){
+        const twoMonths = 60 * 24 * 60 * 60 * 1000;
+        const target = new Date().getTime() + twoMonths;
+
+        setInterval(function(){
+            const now = new Date().getTime();
+            const distance = target - now;
+
+            let days    = Math.floor(distance / (1000*60*60*24));
+            let hours   = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+            let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+            let seconds = Math.floor((distance%(1000*60))/1000);
+
+            document.getElementById("timer").innerHTML =
+                days+"d : "+hours+"h : "+minutes+"m : "+seconds+"s";
+
+            if(distance < 0){
+                document.getElementById("timer").innerHTML="We Are Live!";
+            }
+        },1000);
+    }
+
+    startCountdown();
+
+    function goToProducts() {
+        window.location.href = "prod";
+    }
+</script>
+
+</body>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("a[href]").forEach(link => {
+        let href = link.getAttribute("href");
+
+        if (!href) return;
+        if (href.endsWith(".html")) {
+            href = href.replace(".html", ""); // remove .html
+
+            // If not ending with "/", add it
+            if (!href.endsWith("/")) {
+                href += "/";
+            }
+
+            link.setAttribute("href", href);
+        }
+    });
+});
+</script>
+
+

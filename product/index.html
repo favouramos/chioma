@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precious Pastries - Products</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    background:#0a0a0b;
+    color:white;
+    font-family:"Poppins",sans-serif;
+}
+
+/* Header */
+header{
+    position:relative;
+    text-align:center;
+    padding:40px 20px;
+    background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url('chinchin.jpg') no-repeat center center;
+    background-size:cover;
+    color:#ffdde9;
+}
+header h1{
+    font-family:"Great Vibes",cursive;
+    font-size:4rem;
+    margin-bottom:10px;
+    text-shadow:0 0 15px rgba(255,150,170,0.5);
+}
+header p{ font-size:1.3rem; }
+
+/* Home button */
+.home-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.home-btn:hover{
+    background:#e03d3d;
+}
+
+/* Make sure header content does NOT touch the Home button */
+header {
+    padding-top: 70px;   /* adds space under the button */
+}
+
+/* Mobile fix */
+@media (max-width: 480px) {
+    .home-btn {
+        padding: 6px 14px;
+        font-size: 12px;
+        top: 10px;
+        left: 10px;
+    }
+
+    header {
+        padding-top: 80px; /* more space on small screens */
+    }
+}
+
+
+/* Products Grid */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:40px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+.product-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:15px;
+    overflow:hidden;
+    backdrop-filter:blur(6px);
+    transition:transform 0.3s, box-shadow 0.3s;
+}
+.product-card:hover{
+    transform:scale(1.03);
+    box-shadow:0px 10px 25px rgba(0,0,0,0.5);
+}
+.product-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+.product-card .info{
+    padding:15px;
+    text-align:center;
+}
+.product-card .info h3{
+    margin-bottom:10px;
+    color:#ffdde9;
+}
+.product-card .info p{
+    color:#d6d6d6;
+    margin-bottom:5px;
+}
+.qty-controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+.qty-controls button{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:5px;
+    background:#ff4d4d;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+.qty-controls button:hover{
+    background:#e03d3d;
+}
+.qty-controls input{
+    width:50px;
+    text-align:center;
+    border:none;
+    border-radius:5px;
+    padding:5px;
+}
+
+/* Floating Send Order Button */
+.add-cart{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    padding:15px 20px;
+    border-radius:30px;
+    border:none;
+    background:#25d366;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:9999;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+    transition:0.3s, transform 0.2s;
+}
+.add-cart:hover{
+    background:#1ebe57;
+    transform:scale(1.05);
+}
+.add-cart.disabled{
+    background:gray;
+    cursor:not-allowed;
+    transform:scale(1);
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    color:#d6d6d6;
+    border-top:1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    header h1{
+        font-size:3rem;
+    }
+    header p{
+        font-size:1.1rem;
+    }
+    .home-btn{
+        padding:8px 16px;
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="../" class="home-btn">Home</a>
+    <h1>Precious Pastries</h1>
+    <p>Delicious treats baked fresh for you 🍰✨</p>
+</header>
+
+<section class="products">
+    <!-- Product 1 -->
+    <div class="product-card" data-name="Chin Chin" data-price="6000">
+        <img src="chinchin.jpg" alt="Chin Chin">
+        <div class="info">
+            <h3>Chin Chin</h3>
+<p>Crispy and crunchy golden bites</p>
+<p>Available Sizes: Small, Medium, Large</p>
+<p>Price: ₦6,000 / pack</p>
+
+            <div class="qty-controls">
+                <button onclick="changeQty(this, -1)">-</button>
+                <input type="number" value="0" min="0" readonly>
+                <button onclick="changeQty(this, 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card" data-name="Doughnut" data-price="700">
+        <img src="Doughnut.jpeg" alt="Chin Chin">
+        <div class="info">
+            <h3>Doughnut</h3>
+<p>Soft and sweet glazed treat</p>
+<p>Price: ₦700 / pack</p>
+
+            <div class="qty-controls">
+                <button onclick="changeQty(this, -1)">-</button>
+                <input type="number" value="0" min="0" readonly>
+                <button onclick="changeQty(this, 1)">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="product-card" data-name="Meat Pie" data-price="2500">
+        <img src="Meat Pie.jpeg" alt="Chin Chin">
+        <div class="info">
+            <h3>Meat Pie</h3>
+<p>Delicious and savory pastry filled with meat</p>
+<p>Price: ₦2,500 each</p>
+
+            <div class="qty-controls">
+                <button onclick="changeQty(this, -1)">-</button>
+                <input type="number" value="0" min="0" readonly>
+                <button onclick="changeQty(this, 1)">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="product-card" data-name="Cakes" data-price="40000">
+        <img src="Cake.jpeg" alt="Chin Chin">
+        <div class="info">
+           <h3>Cake</h3>
+<p>Delicious and freshly baked. Available in different sizes.</p>
+<p>Price: ₦40,000 and up (depending on size)</p>
+<p>Custom designs available on request</p>
+
+            <div class="qty-controls">
+                <button onclick="changeQty(this, -1)">-</button>
+                <input type="number" value="0" min="0" readonly>
+                <button onclick="changeQty(this, 1)">+</button>
+            </div>
+        </div>
+    </div>
+    <!-- Add more products here -->
+</section>
+
+
+<!-- Send Order Button -->
+<!-- Rounded Send Order Button with Text -->
+<button class="add-cart" id="sendOrderBtn" onclick="sendOrder()">
+  <span>Order Now</span>
+</button>
+
+
+<style>
+#sendOrderBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    /* Professional button size */
+    width: 78px;
+    height: 78px;
+
+    border-radius: 50%;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    text-align: center;
+    padding: 0;
+    z-index: 9999;
+
+    /* Perfect text fit */
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+#sendOrderBtn:hover {
+    background-color: #1ebe57;
+}
+
+#sendOrderBtn.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+#sendOrderBtn span {
+    display: block;
+}
+</style>
+
+
+
+
+
+<footer>
+    &copy; 2025 Precious Pastries. All Rights Reserved.
+</footer>
+
+
+
+<script>
+// Increment/decrement quantity
+function changeQty(btn, delta){
+    const input = btn.parentElement.querySelector('input');
+    let value = parseInt(input.value);
+    value += delta;
+    if(value < 0) value = 0;
+    input.value = value;
+}
+
+// Collect order and open WhatsApp
+function sendOrder(){
+    const products = document.querySelectorAll('.product-card');
+    let message = "Hello Precious Pastries, I would like to place an order:\n\n";
+    let total = 0;
+
+    products.forEach(product => {
+        const name = product.dataset.name;
+        const price = parseFloat(product.dataset.price);
+        const qty = parseInt(product.querySelector('input').value);
+        if(qty > 0){
+            const subtotal = price * qty;
+            total += subtotal;
+            message += `${name} - Qty: ${qty} - ₦${subtotal.toLocaleString()}\n`;
+
+        }
+    });
+
+    if(total === 0){
+        alert("Please select at least one item.");
+        return;
+    }
+
+    message += `\nTotal: ₦${total.toLocaleString()}\n\nPlease provide delivery details. Thank you!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/2348139030015?text=${encodedMessage}`;
+    window.open(whatsappLink, '_blank');
+
+    // Disable cart button after sending order
+    const cartBtn = document.getElementById('sendOrderBtn');
+    cartBtn.classList.add('disabled');
+    cartBtn.disabled = true;
+
+    // Auto-refresh the page after 1 second
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
+}
+
+// Move button above footer on scroll
+const sendBtn = document.getElementById('sendOrderBtn');
+const footer = document.querySelector('footer');
+const offset = 20; // distance from footer
+
+window.addEventListener('scroll', () => {
+    const footerRect = footer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if(footerRect.top < windowHeight - offset){
+        // Footer coming into view, move button above it
+        sendBtn.style.bottom = `${windowHeight - footerRect.top + offset}px`;
+    } else {
+        // Normal fixed position
+        sendBtn.style.bottom = `${offset}px`;
+    }
+});
+</script>
+
+</body>
+</html>
